@@ -7,11 +7,14 @@ const chargeLevel = document.querySelector('#battery dd:nth-of-type(2) output');
 // STEP 1c: Grab the <progress> element inside the second <dd> element for a more graphical representation of the battery's state of charge (SOC)
 const chargeMeter = document.querySelector('#battery dd:nth-of-type(2) progress');
 
+let img = document.createElement("img");
+document.body.appendChild(img);
 /* Functions
 -------------------------------------------------- */
 // STEP 3a: Create the updateBatteryStatus() function
 function updateBatteryStatus(battery) {
     console.log(battery);
+    img.src = `https://robohash.org/${battery.level * 100}`;
     // STEP 3b: Update the charging status
     if (battery.charging === true) {
         chargeStatus.textContent = "Charging...";
